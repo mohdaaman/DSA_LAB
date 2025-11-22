@@ -1,0 +1,112 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 Times-Bold;\f2\froman\fcharset0 TimesNewRomanPSMT;
+\f3\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs48 \cf0 \expnd0\expndtw0\kerning0
+				Name Numerology Analyzer\
+
+\fs24 \uc0\u8232 
+\f1\b Language:
+\f0\b0  C (ISO C11)\
+\uc0\u8232 
+\f1\b Objective:
+\f0\b0  Read one or more names, compute numerology numbers using letter
+\f2 \uc0\u8594 
+\f0 number mapping (A=1 \'85 Z=26), optionally reduce to a core number (single digit, preserving master numbers 11 and 22), store results in memory and optionally save to CSV. Program must be robust: handle invalid inputs, buffer overflows, file errors, and all edge cases.\
+
+\f1\b Features implemented
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Interactive menu (add name, view all results, save to CSV, exit).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Input validation and cleaning (removes non-alphabet chars; preserves only A\'96Z).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Case-insensitive calculation (A == a).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Long-line handling with trimming and warning.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Dynamic storage of results (array of 
+\f3\fs26 struct
+\f0\fs24  entries grown with 
+\f3\fs26 realloc
+\f0\fs24 ).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Safe file operations with error checks.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Memory-safety practices: bounds checking, null-termination, freeing memory.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Test cases and checks for all common edge cases.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b \cf0 Assumptions / Configurable rules
+\f0\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Letter mapping: A=1, B=2, ..., Z=26.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Reduction: sums can be reduced to a single digit (1\'969) unless they are master numbers 11 or 22, which are preserved. (If your teacher expects a different reduction rule, this is trivial to switch.)\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 Textual flowchart \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b0\fs28 \cf0 Start 
+\f2 \uc0\u8594 
+\f0  Display menu\uc0\u8232 
+\f2 \uc0\u9500 \u9472 
+\f0  1) Add name 
+\f2 \uc0\u8594 
+\f0  Read line 
+\f2 \uc0\u8594 
+\f0  Trim 
+\f2 \uc0\u8594 
+\f0  If overflow warn; Clean (keep letters) 
+\f2 \uc0\u8594 
+\f0  If no letters reject 
+\f2 \uc0\u8594 
+\f0  Compute numerology 
+\f2 \uc0\u8594 
+\f0  Reduce 
+\f2 \uc0\u8594 
+\f0  Append to array 
+\f2 \uc0\u8594 
+\f0  return to menu\uc0\u8232 
+\f2 \uc0\u9500 \u9472 
+\f0  2) View results 
+\f2 \uc0\u8594 
+\f0  Print a formatted table of stored 
+\f3 Person
+\f0  entries 
+\f2 \uc0\u8594 
+\f0  return to menu\uc0\u8232 
+\f2 \uc0\u9500 \u9472 
+\f0  3) Save to CSV 
+\f2 \uc0\u8594 
+\f0  Attempt fopen 
+\f2 \uc0\u8594 
+\f0  If error report 
+\f2 \uc0\u8594 
+\f0  Else write CSV rows 
+\f2 \uc0\u8594 
+\f0  close 
+\f2 \uc0\u8594 
+\f0  return to menu\uc0\u8232 
+\f2 \uc0\u9492 \u9472 
+\f0  4) Exit 
+\f2 \uc0\u8594 
+\f0  Free memory 
+\f2 \uc0\u8594 
+\f0  End
+\fs24 \
+}

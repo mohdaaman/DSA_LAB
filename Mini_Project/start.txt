@@ -1,0 +1,5 @@
+Compile:
+gcc -std=c11 -Wall -Wextra -O2 numerology.c -o numerology
+
+Run:
+./numerology
